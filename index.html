@@ -547,9 +547,6 @@
     background:linear-gradient(180deg,var(--red),var(--gold),var(--red));
   }
 
-  /* ==================================================
-     CON DẤU SÁP — ĐÃ THU NHỎ TRÊN MOBILE
-  ================================================== */
   .letter .seal{
     position:absolute;top:22px;right:22px;
     width:64px;height:64px;border-radius:50%;
@@ -1052,20 +1049,13 @@
   @media(max-width:760px){
     .wrap{padding:50px 16px 100px}
     .letter{padding:36px 24px}
-
-    /* ✅ THU NHỎ CON DẤU SÁP */
     .letter .seal{
-      width:40px;
-      height:40px;
-      font-size:1rem;
-      top:12px;
-      right:12px;
+      width:40px;height:40px;font-size:1rem;
+      top:12px;right:12px;
       box-shadow:0 4px 12px rgba(139,0,0,.5), inset 0 0 8px rgba(0,0,0,.4);
     }
-    /* ✅ NHƯỜNG CHỖ CHO CON DẤU — chữ không bị vướng */
     .letter h3{padding-right:52px}
     .letter .small-date{padding-right:52px}
-
     .stats{grid-template-columns:repeat(2,1fr)}
     .hero-collage{
       grid-template-columns:repeat(2,1fr);
@@ -1092,38 +1082,20 @@
     .kanji-bg{font-size:4.5rem}
     .letter p{text-align:left}
     .sec-title h2{letter-spacing:3px;font-size:1rem}
-
-    /* ✅ MOBILE NHỎ — CON DẤU NHỎ HƠN NỮA */
     .letter{padding:30px 20px}
     .letter .seal{
-      width:34px;
-      height:34px;
-      font-size:.85rem;
-      top:10px;
-      right:10px;
-      letter-spacing:0;
+      width:34px;height:34px;font-size:.85rem;
+      top:10px;right:10px;letter-spacing:0;
     }
-    .letter h3{
-      padding-right:44px;
-      font-size:1.05rem;
-      letter-spacing:2px;
-      line-height:1.35;
-    }
-    .letter .small-date{
-      padding-right:44px;
-      font-size:.7rem;
-      letter-spacing:2px;
-    }
-
+    .letter h3{padding-right:44px;font-size:1.05rem;letter-spacing:2px;line-height:1.35}
+    .letter .small-date{padding-right:44px;font-size:.7rem;letter-spacing:2px}
     .watermark{font-size:.6rem;bottom:6px;right:8px}
   }
 </style>
 </head>
 <body>
 
-<!-- ==================================================
-     ✉️ ENVELOPE OVERLAY
-================================================== -->
+<!-- ENVELOPE OVERLAY -->
 <div class="envelope-overlay" id="envelopeOverlay">
   <div class="env-stage">
     <div class="envelope" id="envelope">
@@ -1265,21 +1237,27 @@
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Kata biểu diễn</div><div class="s">Tinh hoa kỹ thuật</div></div>
     </div>
-    <div class="gitem" data-title="Tập luyện hàng ngày" data-sub="Mồ hôi và nỗ lực">
-      <img src="https://picsum.photos/seed/karate-gallery-04/600/500" alt="Luyện tập">
-      <div class="zoom">🔍</div>
-      <div class="cap"><div class="t">Tập luyện hàng ngày</div><div class="s">Mồ hôi và nỗ lực</div></div>
-    </div>
-    <div class="gitem g-wide" data-title="Giải đấu KarateDo" data-sub="Tự hào mang về huy chương">
-      <img src="https://picsum.photos/seed/karate-gallery-05/900/500" alt="Giải đấu">
-      <div class="zoom">🔍</div>
-      <div class="cap"><div class="t">Giải đấu KarateDo</div><div class="s">Tự hào mang về huy chương</div></div>
-    </div>
+
+    <!-- ✅ ĐÃ ĐỔI VỊ TRÍ: Kumite đối kháng lên trước -->
     <div class="gitem" data-title="Kumite đối kháng" data-sub="Bản lĩnh trên sàn đấu">
       <img src="https://picsum.photos/seed/karate-gallery-06/600/500" alt="Kumite">
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Kumite đối kháng</div><div class="s">Bản lĩnh trên sàn đấu</div></div>
     </div>
+
+    <div class="gitem g-wide" data-title="Giải đấu KarateDo" data-sub="Tự hào mang về huy chương">
+      <img src="https://picsum.photos/seed/karate-gallery-05/900/500" alt="Giải đấu">
+      <div class="zoom">🔍</div>
+      <div class="cap"><div class="t">Giải đấu KarateDo</div><div class="s">Tự hào mang về huy chương</div></div>
+    </div>
+
+    <!-- ✅ ĐÃ ĐỔI VỊ TRÍ: Tập luyện hàng ngày xuống sau -->
+    <div class="gitem" data-title="Tập luyện hàng ngày" data-sub="Mồ hôi và nỗ lực">
+      <img src="https://picsum.photos/seed/karate-gallery-04/600/500" alt="Luyện tập">
+      <div class="zoom">🔍</div>
+      <div class="cap"><div class="t">Tập luyện hàng ngày</div><div class="s">Mồ hôi và nỗ lực</div></div>
+    </div>
+
     <div class="gitem" data-title="Đội tuyển trẻ" data-sub="Tương lai của CLB">
       <img src="https://picsum.photos/seed/karate-gallery-07/600/500" alt="Đội trẻ">
       <div class="zoom">🔍</div>
