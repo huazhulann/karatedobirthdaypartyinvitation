@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🥋 Karatedo Club — Thiệp Mời Sinh Nhật 🥋</title>
+
+<!-- ✅ FONT VIẾT TAY HỖ TRỢ TIẾNG VIỆT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
 
@@ -350,13 +356,19 @@
     color:#6a5230;
     font-size:1rem;
   }
+
+  /* ==================================================
+     SIGNATURE — FONT VIẾT TAY HỖ TRỢ TIẾNG VIỆT
+  ================================================== */
   .letter .sign{
     text-align:right;
-    margin-top:30px;
-    font-family:'Brush Script MT','Segoe Script',cursive;
-    font-size:1.5rem;
+    margin-top:34px;
+    font-family:'Dancing Script','Great Vibes','Segoe Script','Brush Script MT',cursive;
+    font-size:clamp(1.6rem,4.5vw,2rem);
     color:var(--red-dark);
     font-weight:700;
+    line-height:1.4;
+    letter-spacing:.5px;
   }
   .letter .sign span{
     display:block;
@@ -365,7 +377,7 @@
     letter-spacing:3px;
     color:#8a7150;
     text-transform:uppercase;
-    margin-top:4px;
+    margin-top:8px;
     font-weight:600;
   }
 
@@ -633,6 +645,24 @@
   }
 
   /* ==================================================
+     WATERMARK
+  ================================================== */
+  .watermark{
+    position:fixed;
+    bottom:10px;
+    right:14px;
+    font-size:.68rem;
+    color:rgba(255,255,255,.13);
+    letter-spacing:1.5px;
+    font-weight:500;
+    z-index:5;
+    user-select:none;
+    pointer-events:none;
+    transition:color .3s ease;
+  }
+  .watermark:hover{color:rgba(255,255,255,.3)}
+
+  /* ==================================================
      LIGHTBOX
   ================================================== */
   .lightbox{
@@ -817,6 +847,7 @@
     .kanji-bg{font-size:4.5rem}
     .letter p{text-align:left}
     .sec-title h2{letter-spacing:3px;font-size:1rem}
+    .watermark{font-size:.6rem;bottom:6px;right:8px}
   }
 </style>
 </head>
@@ -843,7 +874,7 @@
 
     <!-- ẢNH CLB (thay bằng ảnh thật của CLB) -->
     <div class="hero-collage reveal">
-      <div class="ph"><img src="https://picsum.photos/seed/karate-dojo-1/900/700" alt="Võ đường CLB"></div>
+      <div class="ph"><img src="https://picsum.photos/seed/karate-dojo-1/900/700" alt="Nơi tập luyện CLB"></div>
       <div class="ph"><img src="https://picsum.photos/seed/karate-team-2/500/400" alt="Đội tuyển CLB"></div>
       <div class="ph"><img src="https://picsum.photos/seed/karate-kata-3/500/400" alt="Biểu diễn Kata"></div>
       <div class="ph"><img src="https://picsum.photos/seed/karate-belt-4/500/400" alt="Lễ thăng đai"></div>
@@ -862,29 +893,27 @@
     <h3>Thư Mời Tham Dự Tiệc Sinh Nhật</h3>
     <div class="small-date">Karatedo Club • Ngày 10 tháng 10 năm 2026</div>
 
-    <p>Kính gửi quý <b>võ sinh</b>, các <b>huấn luyện viên</b> và những người bạn
-    luôn dành tình cảm cho <b>Câu lạc bộ Karatedo</b> của chúng ta,</p>
+    <p>Lời đầu tiên, xin thay mặt <b>CLB KarateDo</b> gửi đến <b>Quý CLB</b> bạn những lời chúc
+    sức khỏe và thành công tốt đẹp nhất.</p>
 
-    <p>Võ đạo không chỉ là những cú đấm, cú đá, mà còn là <b>con đường rèn luyện
-    tâm — trí — lực</b>. Trên con đường ấy, mỗi người trong chúng ta đều đã
-    cùng nhau đổ mồ hôi, cùng nhau vượt qua giới hạn và cùng nhau trưởng thành.
-    Và hôm nay, chúng ta có một dịp thật đặc biệt để cùng nhìn lại — đó là
-    <b>ngày sinh nhật của đại gia đình Karatedo</b>.</p>
+    <p>Trên hành trình hoạt động và phát triển, <b>KarateDo Club</b> luôn trân trọng những
+    mối quan hệ đồng hành, giao lưu và gắn kết với các CLB trong cộng đồng.
+    Nhân dịp sinh nhật <b>9 tuổi</b>, CLB KarateDo trân trọng tổ chức
+    <b>Tiệc Sinh Nhật</b> nhằm gặp gỡ, giao lưu, chia sẻ những câu chuyện và
+    cùng nhau tạo nên những kỉ niệm đáng nhớ.</p>
 
     <div class="quote">
-      "Mỗi buổi tập là một lần ta chiến thắng chính mình.<br>
-      Mỗi năm trôi qua là một lần ta siết chặt thêm tình đồng đội."
+      "Mỗi cuộc gặp gỡ là một cơ hội để kết nối.<br>
+      Mỗi hành trình đồng hành là một kỷ niệm đáng nhớ."
     </div>
 
-    <p>Sự hiện diện của quý vị chính là <b>món quà ý nghĩa nhất</b> mà Câu lạc bộ
-    mong được đón nhận. Hãy đến, cùng nâng ly, cùng ôn lại những kỷ niệm đẹp,
-    và cùng viết tiếp chặng đường phía trước của chúng ta trong tinh thần
-    <b>OSU — kiên định, khiêm nhường và tôn trọng</b>.</p>
-
-    <p>Rất mong được gặp quý vị trong buổi tiệc ấm cúng và tràn đầy năng lượng này!</p>
+    <p><b>KarateDo Club</b> rất hân hạnh được đón tiếp đại diện và các thành viên của
+    <b>Quý CLB</b> đến chung vui trong ngày đặc biệt này. Sự hiện diện của <b>Quý CLB</b> sẽ
+    là niềm vui và là món quà ý nghĩa đối với chúng tôi. Rất mong được gặp gỡ
+    và cùng <b>Quý CLB</b> tạo nên một buổi tiệc thật vui vẻ, ấm áp và đáng nhớ.</p>
 
     <div class="sign">
-      Ban Chủ Nhiệm CLB Karatedo
+      Ban Chủ Nhiệm CLB KarateDo
       <span>Trân trọng kính mời</span>
     </div>
   </article>
@@ -898,7 +927,8 @@
     <div class="icard">
       <span class="ic">🏯</span>
       <h4>Thành Lập</h4>
-      <p>Câu lạc bộ Karatedo được thành lập với sứ mệnh lan tỏa tinh thần võ đạo
+      <!-- ✅ ĐÃ SỬA: Thêm "từ năm 2017" -->
+      <p>Câu lạc bộ Karatedo được thành lập <b style="color:var(--red)">từ năm 2017</b> với sứ mệnh lan tỏa tinh thần võ đạo
       và rèn luyện thể chất cho thế hệ trẻ. Trải qua nhiều năm, CLB đã trở thành
       mái nhà chung của hàng trăm võ sinh ở mọi lứa tuổi.</p>
     </div>
@@ -927,20 +957,23 @@
 
   <!-- Stats -->
   <div class="stats reveal">
+    <!-- ✅ ĐÃ SỬA: 50+ -->
     <div class="stat">
-      <div class="num" data-count="150">0</div>
+      <div class="num" data-count="50" data-suffix="+">0</div>
       <div class="lbl">Võ Sinh</div>
     </div>
+    <!-- ✅ ĐÃ SỬA: 2 -->
     <div class="stat">
-      <div class="num" data-count="12">0</div>
+      <div class="num" data-count="2">0</div>
       <div class="lbl">Huấn Luyện Viên</div>
     </div>
     <div class="stat">
       <div class="num" data-count="9">0</div>
       <div class="lbl">Năm Hoạt Động</div>
     </div>
+    <!-- ✅ ĐÃ SỬA: 150+ -->
     <div class="stat">
-      <div class="num" data-count="45">0</div>
+      <div class="num" data-count="150" data-suffix="+">0</div>
       <div class="lbl">Huy Chương</div>
     </div>
   </div>
@@ -952,16 +985,11 @@
 
   <!-- Thay các URL picsum bằng ảnh thật của CLB -->
   <div class="gallery reveal" id="gallery">
-    <div class="gitem g-big" data-title="Võ đường chính của CLB" data-sub="Nơi mọi hành trình bắt đầu">
-      <img src="https://picsum.photos/seed/karate-gallery-01/900/900" alt="Võ đường">
+    <!-- Nơi tập luyện chính -->
+    <div class="gitem g-big" data-title="Nơi tập luyện chính của CLB" data-sub="Nơi mọi hành trình bắt đầu">
+      <img src="https://picsum.photos/seed/karate-gallery-01/900/900" alt="Nơi tập luyện chính">
       <div class="zoom">🔍</div>
-      <div class="cap"><div class="t">Võ đường chính của CLB</div><div class="s">Nơi mọi hành trình bắt đầu</div></div>
-    </div>
-
-    <div class="gitem g-tall" data-title="Lễ thăng đai" data-sub="Khoảnh khắc đáng nhớ">
-      <img src="https://picsum.photos/seed/karate-gallery-02/600/900" alt="Lễ thăng đai">
-      <div class="zoom">🔍</div>
-      <div class="cap"><div class="t">Lễ thăng đai</div><div class="s">Khoảnh khắc đáng nhớ</div></div>
+      <div class="cap"><div class="t">Nơi tập luyện chính của CLB</div><div class="s">Nơi mọi hành trình bắt đầu</div></div>
     </div>
 
     <div class="gitem" data-title="Kata biểu diễn" data-sub="Tinh hoa kỹ thuật">
@@ -976,10 +1004,10 @@
       <div class="cap"><div class="t">Tập luyện hàng ngày</div><div class="s">Mồ hôi và nỗ lực</div></div>
     </div>
 
-    <div class="gitem g-wide" data-title="Giải đấu Karatedo toàn quốc" data-sub="Tự hào mang về huy chương">
+    <div class="gitem g-wide" data-title="Giải đấu KarateDo" data-sub="Tự hào mang về huy chương">
       <img src="https://picsum.photos/seed/karate-gallery-05/900/500" alt="Giải đấu">
       <div class="zoom">🔍</div>
-      <div class="cap"><div class="t">Giải đấu Karatedo toàn quốc</div><div class="s">Tự hào mang về huy chương</div></div>
+      <div class="cap"><div class="t">Giải đấu KarateDo</div><div class="s">Tự hào mang về huy chương</div></div>
     </div>
 
     <div class="gitem" data-title="Kumite đối kháng" data-sub="Bản lĩnh trên sàn đấu">
@@ -1000,28 +1028,10 @@
       <div class="cap"><div class="t">Giao lưu cùng các CLB bạn</div><div class="s">Gắn kết & học hỏi</div></div>
     </div>
 
-    <div class="gitem" data-title="Dã ngoại đồng đội" data-sub="Kỷ niệm ngoài võ đường">
-      <img src="https://picsum.photos/seed/karate-gallery-09/600/500" alt="Dã ngoại">
-      <div class="zoom">🔍</div>
-      <div class="cap"><div class="t">Dã ngoại đồng đội</div><div class="s">Kỷ niệm ngoài võ đường</div></div>
-    </div>
-
-    <div class="gitem" data-title="Sinh hoạt cộng đồng" data-sub="Võ đạo đi cùng nhân ái">
-      <img src="https://picsum.photos/seed/karate-gallery-10/600/500" alt="Sinh hoạt">
-      <div class="zoom">🔍</div>
-      <div class="cap"><div class="t">Sinh hoạt cộng đồng</div><div class="s">Võ đạo đi cùng nhân ái</div></div>
-    </div>
-
     <div class="gitem g-big" data-title="Đêm tiệc sinh nhật CLB" data-sub="Cùng nâng ly vì tình đồng đội">
       <img src="https://picsum.photos/seed/karate-gallery-11/900/900" alt="Tiệc sinh nhật">
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Đêm tiệc sinh nhật CLB</div><div class="s">Cùng nâng ly vì tình đồng đội</div></div>
-    </div>
-
-    <div class="gitem" data-title="Đội ngũ HLV" data-sub="Những người dẫn đường">
-      <img src="https://picsum.photos/seed/karate-gallery-12/600/500" alt="Huấn luyện viên">
-      <div class="zoom">🔍</div>
-      <div class="cap"><div class="t">Đội ngũ HLV</div><div class="s">Những người dẫn đường</div></div>
     </div>
   </div>
 
@@ -1049,7 +1059,6 @@
     <div class="ditem">
       <span class="ic">👕</span>
       <div class="lbl">Trang Phục</div>
-      <!-- ✅ ĐÃ SỬA: Tự Do -->
       <div class="val">Tự Do</div>
     </div>
   </div>
@@ -1072,6 +1081,9 @@
   </div>
 
 </div>
+
+<!-- ✅ WATERMARK -->
+<div class="watermark">Made By huazhulan</div>
 
 <!-- ================= LIGHTBOX ================= -->
 <div class="lightbox" id="lightbox">
@@ -1190,7 +1202,6 @@ setInterval(spawnSpark, 340);
 for(let i=0;i<16;i++) setTimeout(spawnSpark, i*110);
 
 /* ================= COUNTDOWN ================= */
-/* ✅ NGÀY SINH NHẬT: 10/10/2026 lúc 18:30 */
 const TARGET = new Date('2026-10-10T18:30:00').getTime();
 const els = {
   d: document.getElementById('cd-d'),
@@ -1236,13 +1247,13 @@ const statIO = new IntersectionObserver(entries=>{
     if(en.isIntersecting){
       const el = en.target;
       const target = +el.dataset.count;
+      const suffix = el.dataset.suffix || '';
       let cur = 0;
       const step = Math.max(1, Math.ceil(target/40));
       const t = setInterval(()=>{
         cur += step;
         if(cur >= target){ cur = target; clearInterval(t); }
-        el.textContent = cur + (target >= 100 ? '+' : '');
-        if(target < 100) el.textContent = cur;
+        el.textContent = cur + suffix;
       }, 40);
       statIO.unobserve(el);
     }
