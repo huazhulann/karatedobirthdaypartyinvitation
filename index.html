@@ -427,10 +427,18 @@
     50%{background-position:100% 50%}
   }
 
+  /* ✅ SUBTITLE — KHÔNG XUỐNG DÒNG TRÊN MOBILE */
   .subtitle{
-    font-size:clamp(.8rem,2.4vw,1.05rem);
-    letter-spacing:5px;text-transform:uppercase;
-    color:#ffb3bb;margin-bottom:6px;
+    font-size:clamp(.6rem,2.6vw,1.05rem);
+    letter-spacing:clamp(.5px,.5vw,5px);
+    text-transform:uppercase;
+    color:#ffb3bb;
+    margin-bottom:6px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:100%;
+    padding:0 8px;
   }
 
   .osu{
@@ -1089,6 +1097,11 @@
     }
     .letter h3{padding-right:44px;font-size:1.05rem;letter-spacing:2px;line-height:1.35}
     .letter .small-date{padding-right:44px;font-size:.7rem;letter-spacing:2px}
+    /* ✅ THU NHỎ SUBTITLE TRÊN MOBILE NHỎ */
+    .subtitle{
+      font-size:.58rem;
+      letter-spacing:.5px;
+    }
     .watermark{font-size:.6rem;bottom:6px;right:8px}
   }
 </style>
@@ -1238,7 +1251,6 @@
       <div class="cap"><div class="t">Kata biểu diễn</div><div class="s">Tinh hoa kỹ thuật</div></div>
     </div>
 
-    <!-- ✅ ĐÃ ĐỔI VỊ TRÍ: Kumite đối kháng lên trước -->
     <div class="gitem" data-title="Kumite đối kháng" data-sub="Bản lĩnh trên sàn đấu">
       <img src="https://i.ibb.co/k616H6xQ/kumite-i-kh-ng.jpg" alt="Kumite">
       <div class="zoom">🔍</div>
@@ -1251,7 +1263,6 @@
       <div class="cap"><div class="t">Giải đấu KarateDo</div><div class="s">Tự hào mang về huy chương</div></div>
     </div>
 
-    <!-- ✅ ĐÃ ĐỔI VỊ TRÍ: Tập luyện hàng ngày xuống sau -->
     <div class="gitem" data-title="Tập luyện hàng ngày" data-sub="Mồ hôi và nỗ lực">
       <img src="https://i.ibb.co/twRGpr1w/t-p-luy-n-h-ng-ng-y.jpg" alt="Luyện tập">
       <div class="zoom">🔍</div>
