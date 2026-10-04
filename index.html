@@ -109,24 +109,6 @@
     100%{transform:translateY(-105vh) scale(.2);opacity:0}
   }
 
-  /* Belt ribbon */
-  .ribbon{
-    position:fixed;left:0;right:0;height:18px;z-index:60;
-    background:repeating-linear-gradient(90deg,
-      #fff 0 24px, #f5b301 24px 48px, #ff8800 48px 72px,
-      #22cc44 72px 96px, #2299ff 96px 120px, #8833dd 120px 144px,
-      #5a3410 144px 168px, #111 168px 192px);
-    background-size:192px 100%;
-    animation:ribbonRun 5s linear infinite;
-    box-shadow:0 0 24px rgba(245,179,1,.45), 0 0 55px rgba(225,29,46,.3);
-  }
-  .ribbon.top{top:0}
-  .ribbon.bottom{bottom:0;animation-direction:reverse}
-  @keyframes ribbonRun{
-    from{background-position:0 0}
-    to{background-position:192px 0}
-  }
-
   /* ==================================================
      LAYOUT
   ================================================== */
@@ -134,7 +116,7 @@
     position:relative;z-index:10;
     max-width:1180px;
     margin:0 auto;
-    padding:80px 22px 110px;
+    padding:60px 22px 110px;
   }
 
   /* ==================================================
@@ -826,8 +808,7 @@
     .gallery{grid-template-columns:repeat(3,1fr);grid-auto-rows:150px}
   }
   @media(max-width:760px){
-    .wrap{padding:66px 16px 100px}
-    .ribbon{height:14px}
+    .wrap{padding:50px 16px 100px}
     .letter{padding:36px 24px}
     .letter .seal{width:52px;height:52px;font-size:1.2rem;top:16px;right:16px}
     .stats{grid-template-columns:repeat(2,1fr)}
@@ -857,10 +838,6 @@
 <div class="bg"></div>
 <div class="rays"></div>
 <div class="sun"></div>
-
-<!-- BELT RIBBONS -->
-<div class="ribbon top"></div>
-<div class="ribbon bottom"></div>
 
 <div class="wrap">
 
@@ -927,7 +904,6 @@
     <div class="icard">
       <span class="ic">🏯</span>
       <h4>Thành Lập</h4>
-      <!-- ✅ ĐÃ SỬA: Thêm "từ năm 2017" -->
       <p>Câu lạc bộ Karatedo được thành lập <b style="color:var(--red)">từ năm 2017</b> với sứ mệnh lan tỏa tinh thần võ đạo
       và rèn luyện thể chất cho thế hệ trẻ. Trải qua nhiều năm, CLB đã trở thành
       mái nhà chung của hàng trăm võ sinh ở mọi lứa tuổi.</p>
@@ -957,12 +933,10 @@
 
   <!-- Stats -->
   <div class="stats reveal">
-    <!-- ✅ ĐÃ SỬA: 50+ -->
     <div class="stat">
       <div class="num" data-count="50" data-suffix="+">0</div>
       <div class="lbl">Võ Sinh</div>
     </div>
-    <!-- ✅ ĐÃ SỬA: 2 -->
     <div class="stat">
       <div class="num" data-count="2">0</div>
       <div class="lbl">Huấn Luyện Viên</div>
@@ -971,7 +945,6 @@
       <div class="num" data-count="9">0</div>
       <div class="lbl">Năm Hoạt Động</div>
     </div>
-    <!-- ✅ ĐÃ SỬA: 150+ -->
     <div class="stat">
       <div class="num" data-count="150" data-suffix="+">0</div>
       <div class="lbl">Huy Chương</div>
@@ -985,7 +958,6 @@
 
   <!-- Thay các URL picsum bằng ảnh thật của CLB -->
   <div class="gallery reveal" id="gallery">
-    <!-- Nơi tập luyện chính -->
     <div class="gitem g-big" data-title="Nơi tập luyện chính của CLB" data-sub="Nơi mọi hành trình bắt đầu">
       <img src="https://picsum.photos/seed/karate-gallery-01/900/900" alt="Nơi tập luyện chính">
       <div class="zoom">🔍</div>
