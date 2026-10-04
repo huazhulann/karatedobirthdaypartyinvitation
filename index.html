@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🥋 Karatedo Club — Thiệp Mời Sinh Nhật 🥋</title>
 
-<!-- ✅ FONT VIẾT TAY HỖ TRỢ TIẾNG VIỆT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -19,7 +18,6 @@
     --gold:#f5b301;
     --gold-soft:#ffd76a;
     --ink:#0a0404;
-    --paper:#f7f1e6;
   }
 
   html{scroll-behavior:smooth}
@@ -30,6 +28,261 @@
     color:#fff;
     overflow-x:hidden;
     line-height:1.6;
+  }
+
+  /* ==================================================
+     ✉️ ENVELOPE OVERLAY
+  ================================================== */
+  .envelope-overlay{
+    position:fixed;inset:0;z-index:9999;
+    background:
+      radial-gradient(ellipse at center, rgba(40,6,10,.96) 0%, rgba(0,0,0,.99) 70%);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    gap:36px;
+    cursor:pointer;
+    overflow:hidden;
+    transition:opacity .9s ease, visibility .9s ease;
+    padding:20px;
+  }
+  .envelope-overlay.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .envelope-overlay::before{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(225,29,46,.22), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(245,179,1,.15), transparent 45%);
+    animation:envBgPulse 5s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes envBgPulse{
+    0%,100%{opacity:.6}
+    50%{opacity:1}
+  }
+
+  .env-stage{
+    position:relative;
+    width:min(340px, 78vw);
+    aspect-ratio:340/240;
+    perspective:1400px;
+    animation:envFloat 4.5s ease-in-out infinite;
+    z-index:2;
+  }
+  @keyframes envFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-14px)}
+  }
+
+  .envelope{
+    position:absolute;inset:0;
+    transform-style:preserve-3d;
+  }
+
+  .env-back{
+    position:absolute;inset:0;
+    background:linear-gradient(160deg,#a8122b,#6e0818 60%,#4a0510);
+    border-radius:10px;
+    box-shadow:
+      0 40px 90px rgba(0,0,0,.85),
+      0 0 80px rgba(225,29,46,.35);
+    z-index:1;
+  }
+
+  .env-letter{
+    position:absolute;
+    left:50%;
+    top:18%;
+    transform:translateX(-50%) translateY(0);
+    width:84%;
+    height:70%;
+    background:linear-gradient(160deg,#fdf9f0,#f1e7d3);
+    border-radius:6px;
+    box-shadow:0 10px 30px rgba(0,0,0,.6);
+    z-index:2;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    gap:10px;
+    padding:16px;
+    transition:transform 1.1s cubic-bezier(.34,1.15,.5,1) .55s;
+    overflow:hidden;
+  }
+  .env-letter::before{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(200,16,46,.08), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 22px, rgba(180,140,80,.06) 22px 23px);
+    pointer-events:none;
+  }
+  .envelope.open .env-letter{
+    transform:translateX(-50%) translateY(-108%);
+  }
+
+  .env-letter .lj-kanji{
+    font-size:clamp(2rem,7vw,2.6rem);
+    font-weight:900;
+    color:#c8102e;
+    letter-spacing:4px;
+    line-height:1;
+    text-shadow:0 0 16px rgba(200,16,46,.35);
+    position:relative;z-index:1;
+  }
+  .env-letter .lj-line{
+    width:62%;height:1px;
+    background:linear-gradient(90deg,transparent,#c9a45f,transparent);
+    position:relative;z-index:1;
+  }
+  .env-letter .lj-text{
+    font-size:clamp(.6rem,2.4vw,.72rem);
+    letter-spacing:4px;
+    color:#8a6a3a;
+    text-transform:uppercase;
+    font-weight:700;
+    position:relative;z-index:1;
+    text-align:center;
+  }
+  .env-letter .lj-club{
+    font-size:clamp(.55rem,2.2vw,.66rem);
+    letter-spacing:3px;
+    color:#a8863f;
+    font-weight:800;
+    position:relative;z-index:1;
+    margin-top:4px;
+  }
+
+  .env-front{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(200deg,#d4183a 0%,#a5102a 55%,#7d0a1e 100%);
+    border-radius:10px;
+    z-index:3;
+    box-shadow:
+      inset 0 0 50px rgba(0,0,0,.4),
+      inset 0 2px 0 rgba(255,255,255,.08);
+    overflow:hidden;
+  }
+  .env-front::before{
+    content:'';
+    position:absolute;inset:8px;
+    border:1px solid rgba(245,179,1,.22);
+    border-radius:6px;
+    pointer-events:none;
+  }
+  .env-front::after{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      linear-gradient(225deg, transparent calc(50% - 1px), rgba(245,179,1,.16) 50%, transparent calc(50% + 1px)),
+      linear-gradient(135deg, transparent calc(50% - 1px), rgba(245,179,1,.16) 50%, transparent calc(50% + 1px));
+    pointer-events:none;
+  }
+
+  .env-flap{
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:58%;
+    background:linear-gradient(180deg,#ea2442 0%,#c8102e 45%,#8b0d22 100%);
+    clip-path:polygon(0 0, 100% 0, 50% 100%);
+    transform-origin:top center;
+    transform:rotateX(0deg);
+    transition:transform .9s cubic-bezier(.5,0,.2,1);
+    z-index:5;
+    filter:drop-shadow(0 8px 16px rgba(0,0,0,.5));
+    border-radius:10px 10px 0 0;
+  }
+  .env-flap::after{
+    content:'';
+    position:absolute;
+    left:8%;right:8%;top:6px;bottom:22%;
+    border-top:1px solid rgba(245,179,1,.25);
+    border-left:1px solid rgba(245,179,1,.18);
+    border-right:1px solid rgba(245,179,1,.18);
+    clip-path:polygon(0 0, 100% 0, 50% 100%);
+    pointer-events:none;
+  }
+  .envelope.open .env-flap{
+    transform:rotateX(180deg);
+    z-index:0;
+  }
+
+  .env-seal{
+    position:absolute;
+    top:58%;left:50%;
+    transform:translate(-50%,-50%) rotate(0deg);
+    width:clamp(52px,14vw,62px);
+    aspect-ratio:1;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 28%, #ff5568, #c8102e 55%, #7a0a1c 100%);
+    display:flex;align-items:center;justify-content:center;
+    font-family:serif;
+    font-size:clamp(1.3rem,4vw,1.6rem);
+    font-weight:900;
+    color:#ffe9ec;
+    text-shadow:0 1px 3px rgba(0,0,0,.6);
+    box-shadow:
+      0 8px 22px rgba(122,10,28,.75),
+      0 0 0 2px rgba(245,179,1,.5),
+      inset 0 0 16px rgba(0,0,0,.45),
+      inset 0 -3px 8px rgba(0,0,0,.3);
+    z-index:6;
+    transition:opacity .4s ease, transform .5s ease;
+    animation:sealPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes sealPulse{
+    0%,100%{box-shadow:0 8px 22px rgba(122,10,28,.75), 0 0 0 2px rgba(245,179,1,.5), 0 0 0 0 rgba(245,179,1,.5), inset 0 0 16px rgba(0,0,0,.45)}
+    50%{box-shadow:0 8px 22px rgba(122,10,28,.75), 0 0 0 2px rgba(245,179,1,.85), 0 0 0 12px rgba(245,179,1,0), inset 0 0 16px rgba(0,0,0,.45)}
+  }
+  .envelope.open .env-seal{
+    opacity:0;
+    transform:translate(-50%,-50%) rotate(-40deg) scale(.5);
+  }
+
+  .env-hint{
+    position:relative;z-index:2;
+    font-size:.82rem;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    font-weight:800;
+    text-shadow:0 0 20px rgba(245,179,1,.7);
+    animation:hintPulse 2s ease-in-out infinite;
+    text-align:center;
+    padding:0 16px;
+  }
+  .env-hint .ic{
+    display:inline-block;
+    margin-right:8px;
+    animation:hintBob 1.6s ease-in-out infinite;
+  }
+  @keyframes hintPulse{
+    0%,100%{opacity:.55;transform:scale(1)}
+    50%{opacity:1;transform:scale(1.06)}
+  }
+  @keyframes hintBob{
+    0%,100%{transform:translateY(0) rotate(-8deg)}
+    50%{transform:translateY(-4px) rotate(8deg)}
+  }
+
+  .env-spark{
+    position:fixed;
+    width:7px;height:7px;
+    border-radius:50%;
+    background:#ffd76a;
+    box-shadow:0 0 12px #ffd76a, 0 0 26px #f5b301;
+    pointer-events:none;
+    z-index:10001;
+    animation:envSparkFly 1.3s ease-out forwards;
+  }
+  @keyframes envSparkFly{
+    0%{transform:translate(-50%,-50%) scale(0);opacity:0}
+    15%{opacity:1;transform:translate(-50%,-50%) scale(1.5)}
+    100%{transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(.15);opacity:0}
   }
 
   /* ==================================================
@@ -122,11 +375,7 @@
   /* ==================================================
      HERO
   ================================================== */
-  .hero{
-    text-align:center;
-    padding:20px 0 10px;
-    position:relative;
-  }
+  .hero{text-align:center;padding:20px 0 10px;position:relative}
 
   .badge{
     display:inline-flex;align-items:center;gap:10px;
@@ -196,11 +445,10 @@
     50%{transform:scale(1.12);opacity:1}
   }
 
-  /* Hero collage */
   .hero-collage{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    grid-template-rows:repeat(2,110px);
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(3,90px);
     gap:10px;
     margin:40px auto 10px;
     max-width:1000px;
@@ -213,11 +461,12 @@
     box-shadow:0 10px 26px rgba(0,0,0,.55);
     animation:collageFloat 6s ease-in-out infinite;
   }
-  .hero-collage .ph:nth-child(1){grid-column:span 2;grid-row:span 2;animation-delay:0s}
-  .hero-collage .ph:nth-child(2){animation-delay:.4s}
-  .hero-collage .ph:nth-child(3){animation-delay:.8s}
-  .hero-collage .ph:nth-child(4){animation-delay:1.2s}
-  .hero-collage .ph:nth-child(5){animation-delay:1.6s}
+  .hero-collage .ph:nth-child(1){grid-column:1/3;grid-row:1/3;animation-delay:0s}
+  .hero-collage .ph:nth-child(2){grid-column:3/4;grid-row:1/2;animation-delay:.3s}
+  .hero-collage .ph:nth-child(3){grid-column:3/4;grid-row:2/3;animation-delay:.6s}
+  .hero-collage .ph:nth-child(4){grid-column:1/2;grid-row:3/4;animation-delay:.9s}
+  .hero-collage .ph:nth-child(5){grid-column:2/3;grid-row:3/4;animation-delay:1.2s}
+  .hero-collage .ph:nth-child(6){grid-column:3/4;grid-row:3/4;animation-delay:1.5s}
   @keyframes collageFloat{
     0%,100%{transform:translateY(0)}
     50%{transform:translateY(-6px)}
@@ -267,7 +516,7 @@
   }
 
   /* ==================================================
-     INVITATION LETTER (paper style)
+     INVITATION LETTER
   ================================================== */
   .letter{
     position:relative;
@@ -298,6 +547,9 @@
     background:linear-gradient(180deg,var(--red),var(--gold),var(--red));
   }
 
+  /* ==================================================
+     CON DẤU SÁP — ĐÃ THU NHỎ TRÊN MOBILE
+  ================================================== */
   .letter .seal{
     position:absolute;top:22px;right:22px;
     width:64px;height:64px;border-radius:50%;
@@ -308,6 +560,9 @@
     transform:rotate(-12deg);
     letter-spacing:-1px;
     font-family:serif;
+    z-index:2;
+    line-height:1;
+    flex-shrink:0;
   }
 
   .letter h3{
@@ -338,10 +593,6 @@
     color:#6a5230;
     font-size:1rem;
   }
-
-  /* ==================================================
-     SIGNATURE — FONT VIẾT TAY HỖ TRỢ TIẾNG VIỆT
-  ================================================== */
   .letter .sign{
     text-align:right;
     margin-top:34px;
@@ -400,7 +651,6 @@
   }
   .icard p{color:#e6d7d9;font-size:.94rem;line-height:1.75}
 
-  /* Stats strip */
   .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -503,7 +753,6 @@
   }
   .gitem:hover .zoom{opacity:1;transform:scale(1) rotate(0)}
 
-  /* sizes */
   .g-big{grid-column:span 2;grid-row:span 2}
   .g-wide{grid-column:span 2}
   .g-tall{grid-row:span 2}
@@ -539,7 +788,6 @@
   }
   .ditem .val{font-size:1rem;font-weight:800;color:#fff;line-height:1.4}
 
-  /* Countdown */
   .countdown{
     display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
     max-width:640px;margin:34px auto 0;
@@ -612,7 +860,7 @@
   .rsvp:active{transform:translateY(-1px) scale(.98)}
 
   /* ==================================================
-     FOOTER
+     FOOTER + WATERMARK
   ================================================== */
   .footer{
     text-align:center;margin-top:56px;padding:26px;
@@ -626,13 +874,9 @@
     margin-bottom:10px;
   }
 
-  /* ==================================================
-     WATERMARK
-  ================================================== */
   .watermark{
     position:fixed;
-    bottom:10px;
-    right:14px;
+    bottom:10px;right:14px;
     font-size:.68rem;
     color:rgba(255,255,255,.13);
     letter-spacing:1.5px;
@@ -702,7 +946,7 @@
   .lb-next{right:-64px}
 
   /* ==================================================
-     MODAL (RSVP)
+     MODAL
   ================================================== */
   .overlay{
     position:fixed;inset:0;z-index:4000;
@@ -772,7 +1016,6 @@
   }
   .btn-go:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(225,29,46,.9)}
 
-  /* Toast */
   .toast{
     position:fixed;bottom:34px;left:50%;
     transform:translateX(-50%) translateY(160px);
@@ -785,7 +1028,6 @@
   }
   .toast.on{transform:translateX(-50%) translateY(0)}
 
-  /* Confetti */
   .confetti{
     position:fixed;top:-20px;z-index:5500;pointer-events:none;
     animation:confFall linear forwards;
@@ -794,7 +1036,6 @@
     to{transform:translateY(112vh) rotate(760deg);opacity:0}
   }
 
-  /* Reveal */
   .reveal{
     opacity:0;transform:translateY(44px);
     transition:opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1);
@@ -807,14 +1048,35 @@
   @media(max-width:900px){
     .gallery{grid-template-columns:repeat(3,1fr);grid-auto-rows:150px}
   }
+
   @media(max-width:760px){
     .wrap{padding:50px 16px 100px}
     .letter{padding:36px 24px}
-    .letter .seal{width:52px;height:52px;font-size:1.2rem;top:16px;right:16px}
+
+    /* ✅ THU NHỎ CON DẤU SÁP */
+    .letter .seal{
+      width:40px;
+      height:40px;
+      font-size:1rem;
+      top:12px;
+      right:12px;
+      box-shadow:0 4px 12px rgba(139,0,0,.5), inset 0 0 8px rgba(0,0,0,.4);
+    }
+    /* ✅ NHƯỜNG CHỖ CHO CON DẤU — chữ không bị vướng */
+    .letter h3{padding-right:52px}
+    .letter .small-date{padding-right:52px}
+
     .stats{grid-template-columns:repeat(2,1fr)}
-    .hero-collage{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,90px)}
-    .hero-collage .ph:nth-child(1){grid-column:span 2;grid-row:span 2}
-    .hero-collage .ph:nth-child(5){display:none}
+    .hero-collage{
+      grid-template-columns:repeat(2,1fr);
+      grid-template-rows:repeat(3,80px);
+    }
+    .hero-collage .ph:nth-child(1){grid-column:1/3;grid-row:1/3}
+    .hero-collage .ph:nth-child(2){grid-column:1/2;grid-row:3/4}
+    .hero-collage .ph:nth-child(3){grid-column:2/3;grid-row:3/4}
+    .hero-collage .ph:nth-child(4),
+    .hero-collage .ph:nth-child(5),
+    .hero-collage .ph:nth-child(6){display:none}
     .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
     .g-big{grid-column:span 2;grid-row:span 2}
     .g-wide{grid-column:span 2;grid-row:span 1}
@@ -822,17 +1084,66 @@
     .lb-prev{left:8px}
     .lb-next{right:8px}
     .lb-close{top:-44px;right:8px}
+    .env-hint{letter-spacing:3px;font-size:.74rem}
   }
+
   @media(max-width:480px){
     .countdown{grid-template-columns:repeat(2,1fr)}
     .kanji-bg{font-size:4.5rem}
     .letter p{text-align:left}
     .sec-title h2{letter-spacing:3px;font-size:1rem}
+
+    /* ✅ MOBILE NHỎ — CON DẤU NHỎ HƠN NỮA */
+    .letter{padding:30px 20px}
+    .letter .seal{
+      width:34px;
+      height:34px;
+      font-size:.85rem;
+      top:10px;
+      right:10px;
+      letter-spacing:0;
+    }
+    .letter h3{
+      padding-right:44px;
+      font-size:1.05rem;
+      letter-spacing:2px;
+      line-height:1.35;
+    }
+    .letter .small-date{
+      padding-right:44px;
+      font-size:.7rem;
+      letter-spacing:2px;
+    }
+
     .watermark{font-size:.6rem;bottom:6px;right:8px}
   }
 </style>
 </head>
 <body>
+
+<!-- ==================================================
+     ✉️ ENVELOPE OVERLAY
+================================================== -->
+<div class="envelope-overlay" id="envelopeOverlay">
+  <div class="env-stage">
+    <div class="envelope" id="envelope">
+      <div class="env-letter">
+        <div class="lj-kanji">空手道</div>
+        <div class="lj-line"></div>
+        <div class="lj-text">Thiệp Mời Sinh Nhật</div>
+        <div class="lj-line"></div>
+        <div class="lj-club">★ KARATEDO CLUB ★</div>
+      </div>
+      <div class="env-back"></div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <div class="env-seal">道</div>
+    </div>
+  </div>
+  <div class="env-hint">
+    <span class="ic">✉️</span>Chạm để mở thiệp
+  </div>
+</div>
 
 <!-- BACKGROUND -->
 <div class="bg"></div>
@@ -841,7 +1152,7 @@
 
 <div class="wrap">
 
-  <!-- ================= HERO ================= -->
+  <!-- HERO -->
   <header class="hero">
     <div class="badge">🥋 Karatedo Club • Birthday Party 🥋</div>
     <div class="kanji-hero">空手道</div>
@@ -849,17 +1160,17 @@
     <p class="subtitle">✦ Cùng nhau tỏa sáng trên võ đài ✦</p>
     <div class="osu">O S U !</div>
 
-    <!-- ẢNH CLB (thay bằng ảnh thật của CLB) -->
     <div class="hero-collage reveal">
       <div class="ph"><img src="https://picsum.photos/seed/karate-dojo-1/900/700" alt="Nơi tập luyện CLB"></div>
       <div class="ph"><img src="https://picsum.photos/seed/karate-team-2/500/400" alt="Đội tuyển CLB"></div>
       <div class="ph"><img src="https://picsum.photos/seed/karate-kata-3/500/400" alt="Biểu diễn Kata"></div>
       <div class="ph"><img src="https://picsum.photos/seed/karate-belt-4/500/400" alt="Lễ thăng đai"></div>
       <div class="ph"><img src="https://picsum.photos/seed/karate-kumite-5/500/400" alt="Thi đấu Kumite"></div>
+      <div class="ph"><img src="https://picsum.photos/seed/karate-training-6/500/400" alt="Tập luyện cùng nhau"></div>
     </div>
   </header>
 
-  <!-- ================= LỜI MỜI ================= -->
+  <!-- LỜI MỜI -->
   <div class="sec-title reveal">
     <i></i><span class="ic">💌</span><h2>Lời Mời Trân Trọng</h2><i></i>
   </div>
@@ -895,7 +1206,7 @@
     </div>
   </article>
 
-  <!-- ================= THÔNG TIN CLB ================= -->
+  <!-- THÔNG TIN CLB -->
   <div class="sec-title reveal">
     <i></i><span class="ic">🥋</span><h2>Về Câu Lạc Bộ</h2><i></i>
   </div>
@@ -931,75 +1242,54 @@
     </div>
   </div>
 
-  <!-- Stats -->
   <div class="stats reveal">
-    <div class="stat">
-      <div class="num" data-count="50" data-suffix="+">0</div>
-      <div class="lbl">Võ Sinh</div>
-    </div>
-    <div class="stat">
-      <div class="num" data-count="2">0</div>
-      <div class="lbl">Huấn Luyện Viên</div>
-    </div>
-    <div class="stat">
-      <div class="num" data-count="9">0</div>
-      <div class="lbl">Năm Hoạt Động</div>
-    </div>
-    <div class="stat">
-      <div class="num" data-count="150" data-suffix="+">0</div>
-      <div class="lbl">Huy Chương</div>
-    </div>
+    <div class="stat"><div class="num" data-count="50" data-suffix="+">0</div><div class="lbl">Võ Sinh</div></div>
+    <div class="stat"><div class="num" data-count="2">0</div><div class="lbl">Huấn Luyện Viên</div></div>
+    <div class="stat"><div class="num" data-count="9">0</div><div class="lbl">Năm Hoạt Động</div></div>
+    <div class="stat"><div class="num" data-count="150" data-suffix="+">0</div><div class="lbl">Huy Chương</div></div>
   </div>
 
-  <!-- ================= GALLERY ================= -->
+  <!-- GALLERY -->
   <div class="sec-title reveal">
     <i></i><span class="ic">📸</span><h2>Hình Ảnh Câu Lạc Bộ</h2><i></i>
   </div>
 
-  <!-- Thay các URL picsum bằng ảnh thật của CLB -->
   <div class="gallery reveal" id="gallery">
     <div class="gitem g-big" data-title="Nơi tập luyện chính của CLB" data-sub="Nơi mọi hành trình bắt đầu">
       <img src="https://picsum.photos/seed/karate-gallery-01/900/900" alt="Nơi tập luyện chính">
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Nơi tập luyện chính của CLB</div><div class="s">Nơi mọi hành trình bắt đầu</div></div>
     </div>
-
     <div class="gitem" data-title="Kata biểu diễn" data-sub="Tinh hoa kỹ thuật">
       <img src="https://picsum.photos/seed/karate-gallery-03/600/500" alt="Kata">
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Kata biểu diễn</div><div class="s">Tinh hoa kỹ thuật</div></div>
     </div>
-
     <div class="gitem" data-title="Tập luyện hàng ngày" data-sub="Mồ hôi và nỗ lực">
       <img src="https://picsum.photos/seed/karate-gallery-04/600/500" alt="Luyện tập">
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Tập luyện hàng ngày</div><div class="s">Mồ hôi và nỗ lực</div></div>
     </div>
-
     <div class="gitem g-wide" data-title="Giải đấu KarateDo" data-sub="Tự hào mang về huy chương">
       <img src="https://picsum.photos/seed/karate-gallery-05/900/500" alt="Giải đấu">
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Giải đấu KarateDo</div><div class="s">Tự hào mang về huy chương</div></div>
     </div>
-
     <div class="gitem" data-title="Kumite đối kháng" data-sub="Bản lĩnh trên sàn đấu">
       <img src="https://picsum.photos/seed/karate-gallery-06/600/500" alt="Kumite">
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Kumite đối kháng</div><div class="s">Bản lĩnh trên sàn đấu</div></div>
     </div>
-
     <div class="gitem" data-title="Đội tuyển trẻ" data-sub="Tương lai của CLB">
       <img src="https://picsum.photos/seed/karate-gallery-07/600/500" alt="Đội trẻ">
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Đội tuyển trẻ</div><div class="s">Tương lai của CLB</div></div>
     </div>
-
     <div class="gitem g-wide" data-title="Giao lưu cùng các CLB bạn" data-sub="Gắn kết & học hỏi">
       <img src="https://picsum.photos/seed/karate-gallery-08/900/500" alt="Giao lưu">
       <div class="zoom">🔍</div>
       <div class="cap"><div class="t">Giao lưu cùng các CLB bạn</div><div class="s">Gắn kết & học hỏi</div></div>
     </div>
-
     <div class="gitem g-big" data-title="Đêm tiệc sinh nhật CLB" data-sub="Cùng nâng ly vì tình đồng đội">
       <img src="https://picsum.photos/seed/karate-gallery-11/900/900" alt="Tiệc sinh nhật">
       <div class="zoom">🔍</div>
@@ -1007,35 +1297,18 @@
     </div>
   </div>
 
-  <!-- ================= THÔNG TIN BUỔI TIỆC ================= -->
+  <!-- THÔNG TIN BUỔI TIỆC -->
   <div class="sec-title reveal">
     <i></i><span class="ic">🎂</span><h2>Thông Tin Buổi Tiệc</h2><i></i>
   </div>
 
   <div class="details reveal">
-    <div class="ditem">
-      <span class="ic">📅</span>
-      <div class="lbl">Ngày</div>
-      <div class="val">Thứ Bảy<br>10 / 10 / 2026</div>
-    </div>
-    <div class="ditem">
-      <span class="ic">⏰</span>
-      <div class="lbl">Thời Gian</div>
-      <div class="val">18:30</div>
-    </div>
-    <div class="ditem">
-      <span class="ic">📍</span>
-      <div class="lbl">Địa Điểm</div>
-      <div class="val">Nhà Hàng The Corner<br>30A Phan Bội Châu, P. Phan Đình Phùng<br>TP. Thái Nguyên</div>
-    </div>
-    <div class="ditem">
-      <span class="ic">👕</span>
-      <div class="lbl">Trang Phục</div>
-      <div class="val">Tự Do</div>
-    </div>
+    <div class="ditem"><span class="ic">📅</span><div class="lbl">Ngày</div><div class="val">Thứ Bảy<br>10 / 10 / 2026</div></div>
+    <div class="ditem"><span class="ic">⏰</span><div class="lbl">Thời Gian</div><div class="val">18:30</div></div>
+    <div class="ditem"><span class="ic">📍</span><div class="lbl">Địa Điểm</div><div class="val">Nhà Hàng The Corner<br>30A Phan Bội Châu, P. Phan Đình Phùng<br>TP. Thái Nguyên</div></div>
+    <div class="ditem"><span class="ic">👕</span><div class="lbl">Trang Phục</div><div class="val">Tự Do</div></div>
   </div>
 
-  <!-- Countdown -->
   <div class="countdown reveal">
     <div class="cd"><span class="n" id="cd-d">00</span><div class="l">Ngày</div></div>
     <div class="cd"><span class="n" id="cd-h">00</span><div class="l">Giờ</div></div>
@@ -1043,10 +1316,8 @@
     <div class="cd"><span class="n" id="cd-s">00</span><div class="l">Giây</div></div>
   </div>
 
-  <!-- RSVP -->
   <button class="rsvp reveal" onclick="openModal()">🥋 Xác Nhận Tham Dự 🥋</button>
 
-  <!-- ================= FOOTER ================= -->
   <div class="footer">
     <span class="osu-big">OSU!</span>
     <p>KARATEDO CLUB • VÕ ĐẠO TINH THẦN • 2026</p>
@@ -1054,10 +1325,9 @@
 
 </div>
 
-<!-- ✅ WATERMARK -->
 <div class="watermark">Made By huazhulan</div>
 
-<!-- ================= LIGHTBOX ================= -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <div class="lb-inner">
     <button class="lb-close" onclick="closeLightbox()">✕</button>
@@ -1068,20 +1338,14 @@
   </div>
 </div>
 
-<!-- ================= MODAL ================= -->
+<!-- MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal">
     <h3>✍️ Đăng Ký Tham Dự</h3>
     <p class="sub">Điền thông tin để CLB chuẩn bị chu đáo nhất</p>
     <form id="rsvpForm">
-      <div class="field">
-        <label>Họ và Tên</label>
-        <input type="text" id="fName" placeholder="Nguyễn Văn A..." required>
-      </div>
-      <div class="field">
-        <label>Số Điện Thoại</label>
-        <input type="tel" id="fPhone" placeholder="09xx xxx xxx" required>
-      </div>
+      <div class="field"><label>Họ và Tên</label><input type="text" id="fName" placeholder="Nguyễn Văn A..." required></div>
+      <div class="field"><label>Số Điện Thoại</label><input type="tel" id="fPhone" placeholder="09xx xxx xxx" required></div>
       <div class="field">
         <label>Cấp Đai</label>
         <select id="fBelt" required>
@@ -1097,10 +1361,7 @@
           <option>🎉 Khách Mời</option>
         </select>
       </div>
-      <div class="field">
-        <label>Số Người Tham Dự</label>
-        <input type="number" id="fGuests" min="1" max="10" value="1" required>
-      </div>
+      <div class="field"><label>Số Người Tham Dự</label><input type="number" id="fGuests" min="1" max="10" value="1" required></div>
       <div class="modal-actions">
         <button type="button" class="btn-ghost" onclick="closeModal()">Hủy</button>
         <button type="submit" class="btn-go">Gửi 🥋</button>
@@ -1109,11 +1370,10 @@
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast">🎉 Đăng ký thành công!</div>
 
 <script>
-/* ================= AUDIO (Web Audio API — không cần file) ================= */
+/* ================= AUDIO ================= */
 let audioCtx = null;
 function initAudio(){
   if(!audioCtx){
@@ -1135,6 +1395,96 @@ function playTone(freq, dur, type, vol){
 }
 function sfxPop(){ playTone(880, 0.09, 'triangle', 0.09); }
 function sfxWin(){ [523,659,784,1047].forEach((f,i)=>setTimeout(()=>playTone(f,.22,'sine',.12), i*90)); }
+
+function sfxEnvelope(){
+  const ctx = initAudio(); if(!ctx) return;
+  const buffer = ctx.createBuffer(1, ctx.sampleRate * 0.35, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for(let i=0;i<data.length;i++){
+    data[i] = (Math.random()*2-1) * Math.pow(1 - i/data.length, 1.5) * 0.35;
+  }
+  const src = ctx.createBufferSource(); src.buffer = buffer;
+  const filter = ctx.createBiquadFilter();
+  filter.type = 'bandpass'; filter.frequency.value = 2400; filter.Q.value = 0.7;
+  const g = ctx.createGain(); g.gain.value = 0.22;
+  src.connect(filter); filter.connect(g); g.connect(ctx.destination);
+  src.start();
+  [659, 880, 1175, 1568].forEach((f, i) => {
+    setTimeout(()=>playTone(f, 0.35, 'sine', 0.1), 250 + i*80);
+  });
+}
+
+/* ================= ENVELOPE OPEN ================= */
+const envelopeOverlay = document.getElementById('envelopeOverlay');
+const envelopeEl = document.getElementById('envelope');
+let envelopeOpened = false;
+
+document.body.style.overflow = 'hidden';
+
+function openEnvelope(){
+  if(envelopeOpened) return;
+  envelopeOpened = true;
+
+  envelopeEl.classList.add('open');
+  sfxEnvelope();
+  burstEnvSparkles();
+
+  setTimeout(() => {
+    envelopeOverlay.classList.add('hidden');
+    document.body.style.overflow = '';
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight * 0.9){
+        el.classList.add('in');
+      }
+    });
+  }, 2000);
+
+  setTimeout(() => {
+    envelopeOverlay.style.display = 'none';
+  }, 3200);
+}
+
+function handleKey(e){
+  if(!envelopeOpened && (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape')){
+    e.preventDefault();
+    openEnvelope();
+  }
+}
+
+envelopeOverlay.addEventListener('click', openEnvelope);
+document.addEventListener('keydown', handleKey);
+
+/* ================= SPARKLES ================= */
+function burstEnvSparkles(){
+  const stage = document.querySelector('.env-stage');
+  if(!stage) return;
+  const rect = stage.getBoundingClientRect();
+  const cx = rect.left + rect.width/2;
+  const cy = rect.top + rect.height/2;
+
+  const colors = ['#ffd76a','#ff5568','#ffffff','#f5b301','#ff8844'];
+
+  for(let i=0;i<28;i++){
+    setTimeout(() => {
+      const s = document.createElement('div');
+      s.className = 'env-spark';
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 110 + Math.random() * 240;
+      s.style.left = cx + 'px';
+      s.style.top = cy + 'px';
+      s.style.setProperty('--tx', (Math.cos(angle) * dist) + 'px');
+      s.style.setProperty('--ty', (Math.sin(angle) * dist) + 'px');
+      const c = colors[Math.floor(Math.random()*colors.length)];
+      s.style.background = c;
+      s.style.boxShadow = `0 0 12px ${c}, 0 0 26px ${c}`;
+      const sz = 5 + Math.random()*6;
+      s.style.width = s.style.height = sz + 'px';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1400);
+    }, i * 25);
+  }
+}
 
 /* ================= FLOATING KANJI ================= */
 const KANJI = ['空','手','道','武','心','力','拳','気','魂','礼'];
